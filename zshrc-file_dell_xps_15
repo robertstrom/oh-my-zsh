@@ -126,6 +126,8 @@ alias ssh-ninja-pi-1_digitalocean_1='sudo ssh -p 443 -i /home/ninja-pi-1/.ssh/ni
 alias wireguard-vpn-up='sudo wg-quick up /etc/wireguard/wg0.conf'
 alias wireguard-vpn-down='sudo wg-quick down /etc/wireguard/wg0.conf'
 alias pentestingcommands='cd Documents/OSCP_Course/pentestingcommands'
+alias xclip='xclip -selection clipboard'
+alias clip='xclip -selection clipboard' 
 
 get-ipinfo-io() {
     #do things with parameters like $1 such as
