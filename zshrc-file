@@ -1,0 +1,203 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/rstrom/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
+ZSH_THEME="jonathan"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(nmap git aliases alias-finder extract screen thefuck zsh-aliases-exa colored-man-pages	copydir copyfile encode64 extract fastfile nmap sudo screen urltools)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+PATH=$PATH:/home/rstrom/010editor;export PATH; # ADDED BY INSTALLER - DO NOT EDIT OR DELETE THIS COMMENT - 87FF8EFC-483D-BCAA-D67D-735CF60410D1 87160D4C-4DD5-72C7-0C1A-505A0E87222E
+
+alias NmapIntenseNoPing='sudo /usr/bin/nmap -T4 -A -v -Pn'
+alias NmapPingScan='sudo /usr/bin/nmap -sn'
+alias NmapQuickScan='sudo /usr/bin/nmap -T4 -F'
+alias NmapQuickScanPlus='sudo /usr/bin/nmap -sV -T4 -O -F --version-light'
+alias NmapSlowComprehensiveScan='sudo /usr/bin/nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)"'
+alias digExternalIPAddress='dig +short myip.opendns.com @resolver1.opendns.com'
+alias sshdigitalocean_1='ssh root@digitalocean_1'
+alias sshdigitalocean_2='ssh root@digitalocean_2'
+alias sshdigitalocean_honeypot='ssh -p 12222 root@digitalocean_honeypot'
+alias sshpihole='ssh rstrom@pihole'
+alias raspberrypi-plex-wired='echo "Wired IP Address is 192.168.47"'
+alias sshhoneypot='ssh -p 12222 rstrom@raspberrypi-honeypot'
+alias ssh-kali-ninja-pi='ssh -i ~/.ssh/kali.ninja-pi-1.id_ed25519 rstrom@kali-ninja-pi'
+alias ssh-ninja-pi-1_digitalocean_1='sudo ssh -p 443 -i /home/ninja-pi-1/.ssh/ninja-pi-1.cloud.id_ed25519 ninja-pi-1@digitalocean_1'
+alias wireguard-vpn-up='sudo wg-quick up /etc/wireguard/wg0.conf'
+alias wireguard-vpn-down='sudo wg-quick down /etc/wireguard/wg0.conf'
+alias pentestingcommands='cd Documents/OSCP_Course/pentestingcommands'
+
+get-ipinfo-io() {
+    #do things with parameters like $1 such as
+    curl ipinfo.io/"$1"
+}
+
+get-iplookup-io() {
+    #do things with parameters like $1 such as
+    curl https://json.geoiplookup.io/geo/"$1"
+}
+
+get-LinuxInstallDate() {
+    echo ""
+    echo "The lost+found install date is:"
+    ls -ld /lost+found
+    echo ""
+    echo "The /var/log/installer install date is:"
+    ls -ld /var/log/installer
+    echo ""
+}
+
+function pretty_csv {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
+
+function mount_OWC_Stax {
+	sudo mount /dev/nvme1n1p2 /home/rstrom/thunderbolt/ -o umask=000
+}
+
+function unmount_OWC_Stax {
+	sudo umount /home/rstrom/thunderbolt/
+}
+
+compress-OSCP-Kali-Linux() {
+red=`tput setaf 1`
+green=`tput setaf 2`
+bold=`tput bold`
+reset=`tput sgr0`
+whitebg=`tput setab 7`
+BEGINTIME=`date`
+echo "Please enter the date to be used for the backup file name - e.g. 2021-11-29"
+read kali_date
+echo "The Kali OSCP Virtual machine directory will be backed up to a file named ${red}${bold}${whitebg}Kali_OSCP_PenTestingVM_"$kali_date".tar.zst${reset}"
+cd ~/vmware
+tar -I 'zstd --fast=4 -T0' -cf Kali_OSCP_PenTestingVM_"$kali_date".tar.zst 'Kali Linux - OSCP'/
+ENDTIME=`date`
+lsa Kali_OSCP_PenTestingVM_"$kali_date".tar.zst
+cd -
+echo ""
+echo "${red}${bold}${whitebg} The Kali OSCP VMware backup script began running at ${BEGINTIME}${reset}"
+echo "${red}${bold}${whitebg} The Kali OSCP VMware backup script completed running at ${ENDTIME}${reset}"
+echo ""
+}
+
+compress-HTB-Kali-Linux() {
+red=`tput setaf 1`
+green=`tput setaf 2`
+bold=`tput bold`
+reset=`tput sgr0`
+whitebg=`tput setab 7`
+BEGINTIME=`date`
+echo "Please enter the date to be used for the backup file name - e.g. 2021-11-29"
+read kali_date
+echo "The Kali HTB Virtual machine directory will be backed up to a file named ${red}${bold}${whitebg}Kali_HTB_PenTestingVM_"$kali_date".tar.zst${reset}"
+cd ~/vmware
+tar -I 'zstd --fast=4 -T0' -cf Kali_HTB_PenTestingVM_"$kali_date".tar.zst 'Kali Linux'/
+ENDTIME=`date`
+lsa Kali_HTB_PenTestingVM_"$kali_date".tar.zst
+cd -
+echo ""
+echo "${red}${bold}${whitebg} The Kali HTB VMware backup script began running at ${BEGINTIME}${reset}"
+echo "${red}${bold}${whitebg} The Kali HTB VMware backup script completed running at ${ENDTIME}${reset}"
+echo ""
+}
+
