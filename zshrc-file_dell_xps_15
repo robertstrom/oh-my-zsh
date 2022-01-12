@@ -124,7 +124,7 @@ alias wireguard-vpn-down='sudo wg-quick down /etc/wireguard/wg0.conf'
 alias pentestingcommands='cd Documents/OSCP_Course/pentestingcommands'
 # requires that xclip be installed
 alias xclip='xclip -selection clipboard'
-alias clip='xclip -selection clipboard' 
+alias clip='xclip -selection clipboard'
 
 get-ipinfo-io() {
     #do things with parameters like $1 such as
@@ -169,7 +169,7 @@ echo "Please enter the date to be used for the backup file name - e.g. 2021-11-2
 read kali_date
 echo "The Kali OSCP Virtual machine directory will be backed up to a file named ${red}${bold}${whitebg}Kali_OSCP_PenTestingVM_"$kali_date".tar.zst${reset}"
 cd ~/vmware
-tar -I 'zstd --fast=4 -T0' -cf Kali_OSCP_PenTestingVM_"$kali_date".tar.zst 'Kali Linux - OSCP'/
+tar -acf Kali_OSCP_PenTestingVM_"$kali_date".tar.zst 'Kali Linux - OSCP'/
 ENDTIME=`date`
 lsa Kali_OSCP_PenTestingVM_"$kali_date".tar.zst
 cd -
@@ -190,13 +190,34 @@ echo "Please enter the date to be used for the backup file name - e.g. 2021-11-2
 read kali_date
 echo "The Kali HTB Virtual machine directory will be backed up to a file named ${red}${bold}${whitebg}Kali_HTB_PenTestingVM_"$kali_date".tar.zst${reset}"
 cd ~/vmware
-tar -I 'zstd --fast=4 -T0' -cf Kali_HTB_PenTestingVM_"$kali_date".tar.zst 'Kali Linux'/
+tar -acf Kali_HTB_PenTestingVM_"$kali_date".tar.zst 'Kali Linux'/
 ENDTIME=`date`
 lsa Kali_HTB_PenTestingVM_"$kali_date".tar.zst
 cd -
 echo ""
 echo "${red}${bold}${whitebg} The Kali HTB VMware backup script began running at ${BEGINTIME}${reset}"
 echo "${red}${bold}${whitebg} The Kali HTB VMware backup script completed running at ${ENDTIME}${reset}"
+echo ""
+}
+
+compress-Win10-WSL() {
+red=`tput setaf 1`
+green=`tput setaf 2`
+bold=`tput bold`
+reset=`tput sgr0`
+whitebg=`tput setab 7`
+BEGINTIME=`date`
+echo "Please enter the date to be used for the backup file name - e.g. 2021-11-29"
+read kali_date
+echo "The Windows 10 WSL Virtual machine directory will be backed up to a file named ${red}${bold}${whitebg}Win10-WSL-VM_"$kali_date".tar.zst${reset}"
+cd ~/vmware
+tar -acf Win10-WSL-VM_"$kali_date".tar.zst 'Win10_2004_WSL'
+ENDTIME=`date`
+lsa Win10-WSL-VM_"$kali_date".tar.zst
+cd -
+echo ""
+echo "${red}${bold}${whitebg} The Win10 WSL VMware backup script began running at ${BEGINTIME}${reset}"
+echo "${red}${bold}${whitebg} The Win10 WSL VMware backup script completed running at ${ENDTIME}${reset}"
 echo ""
 }
 
