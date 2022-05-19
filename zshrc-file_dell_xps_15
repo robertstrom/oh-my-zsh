@@ -221,3 +221,8 @@ echo "${red}${bold}${whitebg} The Win10 WSL VMware backup script completed runni
 echo ""
 }
 
+connect-QNAP-sshfs() {
+sshfs rstrom@qnap: ~/QNAPMyDocs
+}
+
+
