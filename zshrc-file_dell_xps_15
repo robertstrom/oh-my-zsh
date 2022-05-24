@@ -250,3 +250,8 @@ get-DNS-server-WiFi-NIC() {
 	nmcli device show wlp2s0 | grep IP4.DNS
 }
 
+nmap-xml-to-html() {
+infile=$1
+outfile=$(echo $infile | sed 's/xml/html/')
+xsltproc $infile -o $outfile
+}
