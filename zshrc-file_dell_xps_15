@@ -243,10 +243,10 @@ get-DNS-servers() {
 }
 
 get-DNS-server-IP-only() {
-nmcli dev show | grep DNS | sed 's/\s\s*/\t/g' | cut -f 2
+	nmcli dev show | grep DNS | sed 's/\s\s*/\t/g' | cut -f 2
 }
 
 get-DNS-server-WiFi-NIC() {
-nmcli device show wlp2s0 | grep IP4.DNS
+	nmcli device show wlp2s0 | grep IP4.DNS
 }
 
