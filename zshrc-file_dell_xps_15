@@ -221,6 +221,31 @@ echo "${red}${bold}${whitebg} The Win10 WSL VMware backup script completed runni
 echo ""
 }
 
+compress-Kali-RaspberrytPi-Image() {
+red=`tput setaf 1`
+green=`tput setaf 2`
+bold=`tput bold`
+reset=`tput sgr0`
+whitebg=`tput setab 7`
+BEGINTIME=`date`
+echo "Please enter the date to be used for the backup file name - e.g. 2021-11-29"
+read RaspberryPiImage_date
+echo "Please enter the name of the Raspberry Pi Image to compress"
+read RaspberryPiImage_name
+echo "The Raspberry Pi Image will be compressed to a file named ${red}${bold}${whitebg}kali-ninja_raspberrypi-image_"$RaspberryPiImage_date".7z${reset}"
+
+7z a -t7z -m0=LZMA2:d64k:fb32 -ms=8m -mmt=30 -mx=1 kali-ninja_raspberrypi-image_"$RaspberryPiImage_date".7z $RaspberryPiImage_name
+
+cd ~
+
+ENDTIME=`date`
+lsa kali-ninja_raspberrypi-image_"$RaspberryPiImage_date".7z
+echo ""
+echo "${red}${bold}${whitebg} The Kali Raspberry Pi compression script began running at ${BEGINTIME}${reset}"
+echo "${red}${bold}${whitebg} The Kali Raspberry Pi compression script completed running at ${ENDTIME}${reset}"
+echo ""
+}
+
 connect-QNAP-sshfs() {
 sshfs rstrom@qnap: ~/QNAPMyDocs
 }
