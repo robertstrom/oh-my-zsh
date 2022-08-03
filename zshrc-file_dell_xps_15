@@ -125,6 +125,7 @@ alias pentestingcommands='cd Documents/OSCP_Course/pentestingcommands'
 # requires that xclip be installed
 alias xclip='xclip -selection clipboard'
 alias clip='xclip -selection clipboard'
+alias rsync-IRTools='rsync -ahvP --no-o --no-g --no-perms --timeout=600 --block-size=131072 --protect-args '/home/rstrom/Downloads/IRTools' rstrom@qnap:"My Documents/" --delete-after --delete-excluded'
 
 get-ipinfo-io() {
     #do things with parameters like $1 such as
@@ -246,10 +247,10 @@ echo "${red}${bold}${whitebg} The Kali Raspberry Pi compression script completed
 echo ""
 }
 
+
 connect-QNAP-sshfs() {
 sshfs rstrom@qnap: ~/QNAPMyDocs
 }
-
 
 connect-remote-SMB-share() {
     echo "Please enter the SMB username"
@@ -262,6 +263,15 @@ connect-remote-SMB-share() {
     read smb_share
     sudo mount -t cifs -o gid=1000,uid=1000,vers=3.0,username=$smb_user_name,password=$smb_user_password //$smb_ip_address/$smb_share /home/rstrom/SMBMount
 }
+
+connect-LinuxMintVM-sshfs() {
+sshfs rstrom@linux-mint-vm: ~/LinuxMintVM
+}
+
+connect-PlexTerraMaster-sshfs() {
+sshfs rstrom@raspberrypi-plex:/mnt/TerraMaster ~/PlexTerraMaster
+}
+
 
 get-DNS-servers() {
 	nmcli dev show | grep DNS
@@ -279,15 +289,4 @@ nmap-xml-to-html() {
 infile=$1
 outfile=$(echo $infile | sed 's/xml/html/')
 xsltproc $infile -o $outfile
-}
-
-convert-NT-DateTime() {
-	echo "Please enter the NT Date String"
-	read ntdate
-	nanotime="$ntdate"
-	let "seconds = (($nanotime / 10000000))"
-	let "epoch = (($seconds - 11644473600))"
-	echo ""
-	echo "The NT timestamp conversion translates to this date and time:"
-	date -d@$epoch
 }
