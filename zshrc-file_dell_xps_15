@@ -301,3 +301,7 @@ infile=$1
 outfile=$(echo $infile | sed 's/xml/html/')
 xsltproc $infile -o $outfile
 }
+
+expandshortURL() {
+    curl --insecure -sLI "$1" | grep Location
+}
