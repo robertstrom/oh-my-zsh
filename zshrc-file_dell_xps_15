@@ -320,3 +320,12 @@ xsltproc $infile -o $outfile
 expandshortURL() {
     curl --insecure -sLI "$1" | grep Location
 }
+
+function pretty_csv {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
+
+sort-ips() {
+sort -t . -n -k 1,1 -k 2,2 -k 3,3 -k 4,4 $1
+}
+
