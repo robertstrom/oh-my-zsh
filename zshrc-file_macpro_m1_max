@@ -164,3 +164,13 @@ get-LinuxInstallDate() {
 function pretty_csv {
     column -t -s, -n "$@" | less -F -S -X -K
 }
+
+sort-ips() {
+sort -t . -n -k 1,1 -k 2,2 -k 3,3 -k 4,4 $1
+}
+
+export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
+
+function pretty_csv {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
